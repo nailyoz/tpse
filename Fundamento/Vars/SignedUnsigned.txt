@@ -1,0 +1,3 @@
+Para termos controlo sobre a “positividade” ou “negatividade” de um número, podemos atribuir os modificadores signed e unsigned. Para que uma variável possa conter tanto números
+positivos como negativos, devemos utilizar o modificador signed. Caso queira que o número seja
+apenas positivo, incluindo 0, utilize unsigned.
