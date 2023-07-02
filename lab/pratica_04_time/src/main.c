@@ -34,25 +34,25 @@
  * =====================================================================================
  */
 int main(void){
-	unsigned char count=9; 
-
 	/*-----------------------------------------------------------------------------
-	 *  initialize UART modules
+	 *  initialize PIN modules
 	 *-----------------------------------------------------------------------------*/
-	uartInitModule(UART0, 115200, STOP1, PARITY_NONE, FLOW_OFF);
+		gpioInitModule(GPIO1);
+		gpioPinMuxSetup(GPIO1, 21);
+		gpioSetDirection(GPIO1, 21, OUTPUT);
 	
 	/*-----------------------------------------------------------------------------
 	 *  initialize TIMER modules
 	 *-----------------------------------------------------------------------------*/
     DMTimerSetUp();
 
-	//uartPutString(UART0,"GPIO INPUT Initialized",23);	
-  	uartPutString(UART0,"Time: ",7);
-  	while(count){
-		uartPutC(UART0,0x30+count);
-		Delay(1000);
-		count--;
-		uartPutC(UART0,' ');
+  	while(1){
+		gpioSetPinValue(GPIO1, 21, LOW);
+		//5hz
+		Delay(200);
+		gpioSetPinValue(GPIO1, 21, HIGH);
+		Delay(200);
+
 	}
 	uartPutString(UART0,"OK...",5);
 
