@@ -27,13 +27,14 @@
 /*****************************************************************************
 **                INTERNAL FUNCTION PROTOTYPES
 *****************************************************************************/
-	
+
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  main
  *  Description:  
  * =====================================================================================
  */
+
 int main(void){
 	disableWtd();
 	//Module 01 led 1
@@ -59,8 +60,6 @@ int main(void){
 	gpioSetDirection(GPIO2, 28, INPUT);
 
 
-	unsigned char ligarLed=0; 
-
 	/*-----------------------------------------------------------------------------
 	 *  initialize UART modules
 	 *-----------------------------------------------------------------------------*/
@@ -76,31 +75,35 @@ int main(void){
 			//fazer funcao animação onandoff
 			
 	//uartPutString(UART0,"GPIO INPUT Initialized",23);	
+	unsigned char botaoUm=0; 
+	unsigned char botaoDois=0;
   	while(1){
 		if(gpioGetPinValue(GPIO2, 1)==HIGH){
 			uartPutC(UART0, '!');
-			ligarLed=!ligarLed;
+			botaoUm=!botaoUm;
 		}
 		if(gpioGetPinValue(GPIO2, 28)==HIGH){
 			uartPutC(UART0, '?');
-			ligarLed= 2;
+			botaoDois=!botaoDois;
 		}
 		//timer 6 - gpio 2 3
 		//timer 7 - gpio 2 4
-		if(ligarLed==1){
-			gpioSetPinValue(GPIO1, 21, HIGH);
-			gpioSetPinValue(GPIO1, 22, HIGH);
-			gpioSetPinValue(GPIO1, 23, HIGH);
-			gpioSetPinValue(GPIO1, 24, HIGH);
-		}if(ligarLed==2){
-			gpioSetPinValue(GPIO1, 21, HIGH);
-			Delay(500);
-			gpioSetPinValue(GPIO1, 22, HIGH);
-			Delay(500);
-			gpioSetPinValue(GPIO1, 23, HIGH);
-			Delay(500);
-			gpioSetPinValue(GPIO1, 24, HIGH);
-			Delay(500);	
+		if(botaoUm==1){
+			if(botaoDois==1){
+				gpioSetPinValue(GPIO1, 21, HIGH);
+				Delay(500);
+				gpioSetPinValue(GPIO1, 22, HIGH);
+				Delay(500);
+				gpioSetPinValue(GPIO1, 23, HIGH);
+				Delay(500);
+				gpioSetPinValue(GPIO1, 24, HIGH);
+				Delay(500);	
+			}else{
+				gpioSetPinValue(GPIO1, 21, HIGH);
+				gpioSetPinValue(GPIO1, 22, HIGH);
+				gpioSetPinValue(GPIO1, 23, HIGH);
+				gpioSetPinValue(GPIO1, 24, HIGH);
+				}
 		}
 		else{
 			gpioSetPinValue(GPIO1, 21, LOW);
