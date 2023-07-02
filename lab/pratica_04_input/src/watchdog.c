@@ -1,0 +1,9 @@
+#include "watchdog.h"
+
+void disableWtd(){
+    HWREG(SOC_WDT_1_REGS + WTD_WSPR) = WTD_DISABLE_FIRST_SEQ;
+    while((HWREG(SOC_WDT_1_REGS + WTD_WWPS) & W_PEND_WSPR) != NO_PENDING);
+
+    HWREG(SOC_WDT_1_REGS + WTD_WSPR) = WTD_DISABLE_SECOND_SEQ;
+    while((HWREG(SOC_WDT_1_REGS + WTD_WWPS) & W_PEND_WSPR) != NO_PENDING);
+}
