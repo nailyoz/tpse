@@ -20,6 +20,7 @@
 #include "timer.h"
 #include "watchdog.h"
 #include "gpio.h"
+#include "irq_handle.h"
 /*****************************************************************************
 **                INTERNAL MACRO DEFINITIONS
 *****************************************************************************/
@@ -59,7 +60,8 @@ int main(void){
 	gpioPinMuxSetup(GPIO2, 28);
 	gpioSetDirection(GPIO2, 28, INPUT);
 
-
+	//IRQ
+	setMirClear(GPIOINT2A);
 	/*-----------------------------------------------------------------------------
 	 *  initialize UART modules
 	 *-----------------------------------------------------------------------------*/
