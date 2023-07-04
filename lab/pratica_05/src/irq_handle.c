@@ -44,5 +44,5 @@ void irqHandler(void){
 
 //interruptions
 void gpioIrq(void){
-	
+	HWREG(GPIO1_IRQSTATUS_0) = 1 << 28;
 }

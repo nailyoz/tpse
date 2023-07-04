@@ -2116,6 +2116,7 @@ uartPutC	src/uart.c	/^void uartPutC(UART_t uart, char c){$/;"	f	signature:(UART_
 uartPutString	src/uart.c	/^int uartPutString(UART_t uart, char *str, unsigned int length){$/;"	f	signature:(UART_t uart, char *str, unsigned int length)
 uartgetString	src/uart.c	/^int uartgetString(UART_t uart, char *buf, unsigned int length){$/;"	f	signature:(UART_t uart, char *buf, unsigned int length)
 ucPinNumber	inc/gpio.h	/^typedef unsigned char ucPinNumber;$/;"	t
+
 CM_PER_GMPCA6_REGS	inc/bbb_regs.h	53;"	d
 CM_PER_GPIO1_CLKCTRL	inc/bbb_regs.h	47;"	d
 CM_PER_RTC_CLKSTCTRL	inc/bbb_regs.h	49;"	d

@@ -6,6 +6,7 @@
 #include "gpio.h"
 #include "soc_AM335x.h"
 #include "uart.h"
+#include "bbb_regs.h"
 
 #define REG_BIT_MASK (0x1f)
 #define GPIOINT2A  (32)
