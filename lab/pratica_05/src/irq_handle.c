@@ -1,5 +1,4 @@
 #include "irq_handle.h"
-#include "led.h"
 //setting MirClear
 unsigned int getModMirClear(unsigned int irqCode){
     unsigned int module = irqCode >> 5;
@@ -35,15 +34,29 @@ void setIrqPin(gpioMod mod, ucPinNumber pin){
 
 void irq_handler(void){
     unsigned int irqCode = HWREG(INTC_SIR_IRQ) & 0x7f;
-    if (irqCode == 98){
+    if (irqCode == 32){
         GPIO1_Irq();
 	}
     HWREG(INTC_CONTROL) = 0x1000;
-	flagGPIO = true;
 }
 
 //GPIO MODULE 1 interruptions
-void GPIO1_Irq(void){
-	HWREG(GPIO1_IRQSTATUS_SET_0) = 1 << 28;
-	ledSnakes();
+void GPIO2_Irq(void){
+	if(gpioCheckValue(GPIO1,18)){
+			HWREG(GPIO_IRQSTATUS_SET_0) = 1 << 18;
+			    ledOn(GPIO1, 21);
+				ledOn(GPIO1, 22);
+				ledOn(GPIO1, 23);
+				ledOn(GPIO1, 24);
+	
+	}
+	if(gpioCheckValue(GPIO1, 28) && gpioCheckValue(GPIO1,18) ){
+		ledSnake();
+	}
+	else{
+		ledOff(GPIO1, 21);
+		ledOff(GPIO1, 22);
+		ledOff(GPIO1, 23);
+		ledOff(GPIO1, 24);
+	}
 }

@@ -3,6 +3,7 @@
 
 #include "gpio.h"
 #include "timer.h"
+#include "led.h"
 
 void ledBlink(int mod, int pin);
 void ledOn(int mod, int pin);

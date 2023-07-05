@@ -36,6 +36,9 @@
  *  Description:  
  * =====================================================================================
  */
+	//bttn flags
+	unsigned char botaoUm=0; 
+	unsigned char botaoDois=0;
 
 int main(void){
 	disableWtd();
@@ -55,15 +58,16 @@ int main(void){
 
 	//Module 02 botao 1
 	gpioInitModule(GPIO2);
-	gpioPinMuxSetup(GPIO2, 1);
-	gpioSetDirection(GPIO2, 1, INPUT);
+	gpioPinMuxSetup(GPIO2, 18);
+	//gpio02_1
+	gpioSetDirection(GPIO2, 18, INPUT);
 	// 02 2GPIO2_24 lcdpclk botao 2
 	gpioPinMuxSetup(GPIO2, 28);
 	gpioSetDirection(GPIO2, 28, INPUT);
 
 	//IRQ
 	setMirClear(GPIOINT2A);
-	setIrqPin(2,1);
+	setIrqPin(2,18);
 	setIrqPin(2,28);
 	/*-----------------------------------------------------------------------------
 	 *  initialize UART modules
@@ -74,26 +78,9 @@ int main(void){
 	 *  initialize TIMER modules
 	 *-----------------------------------------------------------------------------*/
     DMTimerSetUp();
-			// fazer função set pins high
-			//fazer variavel pin
-			//fazer variaveis por botao
-			//fazer funcao animação onandoff
-			
-	//uartPutString(UART0,"GPIO INPUT Initialized",23);	
-	unsigned char botaoUm=0; 
-	unsigned char botaoDois=0;
 
-  	while(1){
-		if(gpioGetPinValue(GPIO2, 1)==HIGH){
-			uartPutC(UART0, '!');
-			botaoUm=!botaoUm;
-		}
-		if(gpioGetPinValue(GPIO2, 28)==HIGH){
-			uartPutC(UART0, '?');
-			botaoDois=!botaoDois;
-		}
-		//timer 6 - gpio 2 3
-		//timer 7 - gpio 2 4
+  	while(true){
+
 		if(botaoUm==1){
 			if(botaoDois==2){
 				gpioSetPinValue(GPIO1, 21, HIGH);

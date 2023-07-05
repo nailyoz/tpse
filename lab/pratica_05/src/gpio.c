@@ -309,3 +309,13 @@ unsigned int gpioGetPinValue(gpioMod mod, ucPinNumber pin){
    	}
 }/* -----  end of function gpiogetPinValue  ----- */
 
+gpioCheckValue(int mod, int pin){
+	if(gpioCheckValidPortPin(mod,pin)){
+		if(GPIO1){
+			return HWREG(SOC_GPIO_1_REGS + GPIO_IRQSTATUS_0) & (1 << pin);
+		}
+		else if(GPIO2){
+			return HWREG(SOC_GPIO_2_REGS + GPIO_IRQSTATUS_0) & (1 << pin);
+		}
+	}
+}

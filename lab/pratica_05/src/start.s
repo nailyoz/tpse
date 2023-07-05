@@ -65,7 +65,7 @@ _start:
 .irq_handler:
    stmfd sp!, {r0-r12, lr}
    MRS r11, spsr
-	bl ISR_Handler 
+	bl irq_handler
    dsb
    msr spsr, r11
    ldmfd sp!, {r0-r12, lr}
