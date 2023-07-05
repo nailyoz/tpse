@@ -18,6 +18,10 @@
 
 #include "timer.h"
 #include "uart.h"
+#include "irq_handle.h"
+#include "watchdog.h"
+#include "bbb_regs.h"
+#include "hw_types.h"
 
 /******************************************************************************
 **                      INTERNAL FUNCTION PROTOTYPES
@@ -164,7 +168,21 @@ void DMTimerSetUp(void){
 * Function Name : Delay
 * Comments      :
 *END*-----------------------------------------------------------*/
+int flag_timer = false;
+
 void Delay(unsigned int mSec){
+    
+    unsigned int countVal = TIMER_OVERFLOW - (mSec * TIMER_1MS_COUNT);
+    DMTimerWaitForWrite(0x2, 0x4);
+
+    HWREG(DMTIMER_TCRR) = countVal;
+    flag_timer = false;
+
+    HWREG(DMTIMER_IRQENABLE_SET) = 0x2;
+    timerEnable();
+
+    while(flag_timer == false);
+    
 	while(mSec != 0){
         DMTimerCounterSet(SOC_DMTIMER_7_REGS, 0);
         DMTimerEnable(SOC_DMTIMER_7_REGS);
@@ -172,6 +190,16 @@ void Delay(unsigned int mSec){
         DMTimerDisable(SOC_DMTIMER_7_REGS);
         mSec--;
     }
+
+    HWREG(DMTIMER_IRQENABLE_CLR) = 0x2;
+
 }
 
+//------ watchdog
+void disableWtd(){
+    HWREG(SOC_WDT_1_REGS + WTD_WSPR) = WTD_DISABLE_FIRST_SEQ;
+    while((HWREG(SOC_WDT_1_REGS + WTD_WWPS) & W_PEND_WSPR) != NO_PENDING);
 
+    HWREG(SOC_WDT_1_REGS + WTD_WSPR) = WTD_DISABLE_SECOND_SEQ;
+    while((HWREG(SOC_WDT_1_REGS + WTD_WWPS) & W_PEND_WSPR) != NO_PENDING);
+}

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "watchdog.h": "c",
-        "hw_types.h": "c"
+        "hw_types.h": "c",
+        "bbb_regs.h": "c",
+        "soc_am335x.h": "c"
     }
 }

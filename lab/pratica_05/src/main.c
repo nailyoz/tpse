@@ -21,6 +21,7 @@
 #include "watchdog.h"
 #include "gpio.h"
 #include "irq_handle.h"
+#include "led.h"
 /*****************************************************************************
 **                INTERNAL MACRO DEFINITIONS
 *****************************************************************************/
@@ -62,6 +63,8 @@ int main(void){
 
 	//IRQ
 	setMirClear(GPIOINT2A);
+	setIrqPin(2,1);
+	setIrqPin(2,28);
 	/*-----------------------------------------------------------------------------
 	 *  initialize UART modules
 	 *-----------------------------------------------------------------------------*/
@@ -79,6 +82,7 @@ int main(void){
 	//uartPutString(UART0,"GPIO INPUT Initialized",23);	
 	unsigned char botaoUm=0; 
 	unsigned char botaoDois=0;
+
   	while(1){
 		if(gpioGetPinValue(GPIO2, 1)==HIGH){
 			uartPutC(UART0, '!');
@@ -91,7 +95,7 @@ int main(void){
 		//timer 6 - gpio 2 3
 		//timer 7 - gpio 2 4
 		if(botaoUm==1){
-			if(botaoDois==1){
+			if(botaoDois==2){
 				gpioSetPinValue(GPIO1, 21, HIGH);
 				Delay(500);
 				gpioSetPinValue(GPIO1, 22, HIGH);

@@ -28,6 +28,7 @@
 #define INTC_CONTROL    						0x48200048
 #define INTC_ILR        						0x48200100
 #define INTC_MIR_CLEAR2 						0x482000C8
+#define INTC_MIR_CLEAR3 						0x482000E8
 #define INTC_SYSCONFIG							0x48200010
 #define INTC_SYSSTATUS							0x48200014
 #define INTC_THRESHOLD							0x48200068
@@ -50,6 +51,12 @@
 #define CM_PER_TIMER7_CLKCTRL					0x44E0007C
 #define SOC_CM_DPLL_CLKSEL_TIMER7_CLK          	0x44E00504
 
+/* pin name */
+#define CM_PER_GPMCA7_REGS                      0x44E1085C
+#define CM_PER_GPMCA8_REGS                      0x44E10860
+#define CM_PER_GPMCAD12_REGS                    0x44E10830
+#define CM_PER_GPMCBEn1_REGS                    0x44E10878
+
 /* CM_PER_GMPCA6 */
 #define CM_PER_GMPCA6_REGS                      0x44E10818
 
@@ -57,6 +64,15 @@
 #define GPIO1_OE            					0x4804C134
 #define GPIO1_SETDATAOUT   				 		0x4804C194
 #define GPIO1_CLEARDATAOUT  					0x4804C190
+#define GPIO1_IRQSTATUS_0						0x4804C02C
+#define GPIO1_IRQSTATUS_1						0x4804C030
+#define GPIO1_IRQSTATUS_SET_0  					0x4804C034
+#define GPIO1_IRQSTATUS_SET_1  					0x4804C038
+#define GPIO1_OE            					0x4804C134
+#define GPIO1_DATAIN  							0x4804C138
+#define GPIO1_RISINGDETECT  					0x4804C148
+#define GPIO1_CLEARDATAOUT  					0x4804C190
+#define GPIO1_SETDATAOUT   				 		0x4804C194
 
 
 /* The Input clock is selected as 24MHz. So for 1ms set the count to 0x5DC0. 
