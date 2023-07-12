@@ -1,5 +1,5 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef INTERFACE_H
+#define INTERFACE_H
 
 #define DURACAO_SEGUNDOS 40
 

@@ -24,7 +24,7 @@
 #include "pad.h"
 #include "soc_AM335x.h"
 #include "hw_types.h"
-#include "interrupt.h"
+#include "irq_handler.h"
 
 #define GPIO_REVISION 0x000
 #define GPIO_SYSCONFIG 0x010

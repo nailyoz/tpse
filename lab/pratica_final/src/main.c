@@ -2,15 +2,15 @@
 #include "soc_AM335x.h"
 #include "hw_intc.h"
 #include "hw_types.h"
-#include "interrupt.h"
+#include "irq_handler.h"
 #include "timer.h"
 #include "gpio.h"
 #include "wdt.h"
 #include "uart.h"
-#include "system.h"
+#include "interface.h"
 #include "led_animations.h"
 #include "random.h"
-#include "config.h"
+#include "interface.h"
 
 void gameSetup();
 

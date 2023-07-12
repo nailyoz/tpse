@@ -12,7 +12,7 @@ typedef enum _state
 #include "gpio.h"
 #include "uart.h"
 #include "timer.h"
-#include "interrupt.h"
+#include "irq_handler.h"
 
 void ledOff(gpioMod mod, ucPinNumber pin);
 void ledOn(gpioMod mod, ucPinNumber pin);
