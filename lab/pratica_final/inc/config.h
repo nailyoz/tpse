@@ -1,0 +1,40 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define DURACAO_SEGUNDOS 40
+
+#define LED_VERMELHO_PIN 10
+#define LED_VERMELHO_MOD 2
+
+#define LED_VERDE_PLAYER1_PIN 6
+#define LED_VERDE_PLAYER1_MOD 2
+
+// timer 7
+#define BOTAO_PLAYER1_PIN 3
+#define BOTAO_PLAYER1_MOD 2
+
+#define LED_VERDE_PLAYER2_PIN 7
+#define LED_VERDE_PLAYER2_MOD 2
+
+// timer 6
+#define BOTAO_PLAYER2_PIN 4
+#define BOTAO_PLAYER2_MOD 2
+
+#define LED_VERDE_PLAYER3_PIN 8
+#define LED_VERDE_PLAYER3_MOD 2
+
+// timer 4
+#define BOTAO_PLAYER3_PIN 2
+#define BOTAO_PLAYER3_MOD 2
+
+#define LED_VERDE_PLAYER4_PIN 9
+#define LED_VERDE_PLAYER4_MOD 2
+
+// timer 5
+#define BOTAO_PLAYER4_PIN 5
+#define BOTAO_PLAYER4_MOD 2
+
+#define BOTAO_RESET_PIN 1
+#define BOTAO_RESET_MOD 2
+
+#endif
