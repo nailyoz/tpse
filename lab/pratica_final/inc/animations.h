@@ -1,5 +1,5 @@
-#ifndef LED_ANIMATIONS_H
-#define LED_ANIMATIONS_H
+#ifndef ANIMATIONS_H
+#define ANIMATIONS_H
 
 typedef enum _state
 {
