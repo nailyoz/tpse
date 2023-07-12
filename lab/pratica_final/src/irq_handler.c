@@ -69,9 +69,6 @@ void printb(unsigned int num)
 void IrqGlobalHandler(void)
 {
   unsigned int irq_number = HWREG(BBB_INTC_SIR_IRQ) & 0x7f;
-  // uartPutString(UART0, "IRQ:", 4);
-  // printb(irq_number);
-  // uartPutString(UART0, "\r\n", 2);
   fnRAMVectors[irq_number]();
   HWREG(BBB_INTC_CONTROL) = 0x1;
 }

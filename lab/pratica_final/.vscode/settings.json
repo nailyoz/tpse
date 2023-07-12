@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "led_animations.h": "c"
+        "led_animations.h": "c",
+        "irq_handler.h": "c"
     }
 }

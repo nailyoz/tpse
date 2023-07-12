@@ -18,7 +18,7 @@
 
 #include "timer.h"
 #include "uart.h"
-#include "interrupt.h"
+#include "irq_handler.h"
 
 /******************************************************************************
 **                      INTERNAL FUNCTION PROTOTYPES
