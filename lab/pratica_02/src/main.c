@@ -11,6 +11,7 @@
  *       Compiler:  arm-none-eabi-gcc
  *
  *         Author:  Francisco Helder (FHC), helderhdw@gmail.com
+ * 		Co-Author: Naily de Oliveira Santos, nailyolivera@gmail.com
  *   Organization:  UFC-Quixadá
  *
  * =====================================================================================
