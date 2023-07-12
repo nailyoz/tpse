@@ -8,7 +8,7 @@
 #include "wdt.h"
 #include "uart.h"
 #include "interface.h"
-#include "led_animations.h"
+#include "animations.h"
 #include "random.h"
 #include "interface.h"
 

@@ -1,12 +1,27 @@
 #include "bbb_regs.h"
-#include "interrupt.h"
 #include "gpio.h"
 #include "timer.h"
-#include "led_animations.h"
-#include "system.h"
+#include "animations.h"
+#include "irq_handler.h"
 #include "uart.h"
 
 #define NUM_INTERRUPTS (128u)
+
+
+#define REG_BIT_MASK (0x1F)
+
+unsigned int getIntcMirClear(unsigned int iqrNum)
+{
+  unsigned int module = iqrNum >> 5;
+
+  return SOC_AINTC_REGS + INTC_MIR_CLEAR(module);
+}
+
+void configureMirClear(unsigned int iqrNum)
+{
+  unsigned int mir_clear_addr = getIntcMirClear(iqrNum);
+  HWREG(mir_clear_addr) |= 1 << (iqrNum & REG_BIT_MASK);
+}
 
 InterruptFunction fnRAMVectors[NUM_INTERRUPTS];
 
